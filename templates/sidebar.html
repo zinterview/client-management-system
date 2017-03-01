@@ -1,0 +1,13 @@
+{% extends'base.html' %}
+{% block load_content %}
+    <div class="col-lg-3" id="sidebarMenu" style="padding-top: 5%;">
+        <div class="list-group">
+            <a class="list-group-item" href="/clients">Clients</a>
+            <a class="list-group-item" href="/accounts">Accounts</a>
+            <a class="list-group-item" href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

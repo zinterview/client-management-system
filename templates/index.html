@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block load_content %}
+    <h2>Client Management System</h2>
+    <hr />
+    <div id="loginFormDiv" class="col-lg-6">
+        <h3>Login</h3>
+        <hr />
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" name="email" type="text" placeholder="Email" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" name="password" type="password" placeholder="Password" />
+            </div>
+            <button class="form-control" type="submit">Login</button>
+        </form>
+    </div>
+    <div id="signupFormDiv" class="col-lg-6" style="border-left: dotted gray 1px">
+        <h3>SignUp</h3>
+        <hr />
+        <form method="POST" action="/signup">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input class="form-control" name="name" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" name="email" type="text" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" name="password" type="password" placeholder="Password" />
+            </div>
+            <button class="form-control" type="submit">Signup</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'sidebar.html' %}
+{% block content %}
+    <div class="col-lg-6">
+        {% if client is not none %}
+            <h3>Edit Client Details</h3>
+        {% else %}
+            <h3>Add Client</h3>
+        {% endif %}
+        <hr />
+        {% if client is not none %}
+        <form action="/clients/{{ client.id }}" method="POST">
+        {% else %}
+        <form action="/clients" method="POST">
+        {% endif %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" value="{{ client.name }}" name="name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" value="{{ client.email }}" name="email" />
+            </div>
+            <button type="submit" class="form-control btn btn-primary">
+                {% if client is not none %}
+                    Update
+                {% else %}
+                    Add
+                {% endif %}
+            </button>
+        </form>
+    </div>
+    {% if client is not none %}
+        <div class="col-lg-6">
+            <h3>Linked Accounts</h3>
+            <hr />
+            <ul>
+                {% for account in linked_accounts %}
+                <li><a href="/accounts/{{ account.acc_no }}">{{ account.acc_name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

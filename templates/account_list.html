@@ -1,0 +1,35 @@
+{% extends 'sidebar.html' %}
+{% block title %}Account List{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            <h3>Account List</h3>
+        </div>
+        <div class="col-lg-4">
+            <a class="btn btn-default" href="/accounts/add"
+                style="margin-top: 15px;">Add Account</a>
+        </div>
+    </div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Account Name</th>
+                <th>Acc Holder 1</th>
+                <th>Acc Holder 2</th>
+            </tr>
+        </thead>
+        {% for account in accounts %}
+            <tr>
+                <td>{{ account.acc_no }}</td>
+                <td>{{ account.client1.email }}</td>
+                <td>{{ account.client2.email }}</td>
+                <td>
+                    <a class="btn btn-default" href="/accounts/{{ account.acc_no }}">View</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+    </table>
+{% endblock %}

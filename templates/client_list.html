@@ -1,0 +1,29 @@
+{% extends 'sidebar.html' %}
+{% block title %}Clients List{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8">
+            <h3>Client List</h3>
+        </div>
+        <div class="col-lg-4">
+            <a class="btn btn-default" href="/clients/add"
+               style="margin-top: 15px;">Add Client</a>
+        </div>
+    </div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.email }}</td>
+                <td>{{ client.name }}</td>
+                <td><a href="/clients/{{ client.id }}" class="btn btn-default">View</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

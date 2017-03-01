@@ -1,0 +1,62 @@
+{% extends 'sidebar.html' %}
+{% if account is none %}
+{% else %}
+{% endif %}
+{% block title %}
+{% if account is none %}
+    Add Account
+{% else %}
+    Account Edit
+{% endif %}
+{% endblock %}
+{% block content %}
+    {% if account is none %}
+        <h3>Add Account</h3>
+    {% else %}
+        <h3>Edit Account</h3>
+    {% endif %}
+    <hr />
+    {% if account is none %}
+        <form method="POST" action="/accounts">
+    {% else %}
+        <form method="POST" action="/accounts/{{ account.acc_no }}">
+    {% endif %}
+            <div class="form-group">
+                <label for="acc_no">A/c Number</label>
+                <input type="text" class="form-control" value="{{ account.acc_no }}" name="acc_no">
+            </div>
+            <div class="form-group">
+                <label for="acc_name">A/c Name</label>
+                <input type="text" class="form-control" value="{{ account.acc_name }}" name="acc_name">
+            </div>
+            <div class="form-group">
+                <label for="acc_type">A/c Type</label>
+                <select class="form-control" name="acc_type">
+                    <option value="savings">Savings</option>
+                    <option value="current">Current</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="holder1">A/c holder 1</label>
+                {% if account is none %}
+                    <input type="email" class="form-control" name="client1">
+                {% else %}
+                    <input type="email" class="form-control" value="{{ account.client1.email }}" name="client1" readonly>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="holder2">A/c holder 2</label>
+                {% if account is none %}
+                    <input type="email" class="form-control" name="client2">
+                {% else %}
+                    <input type="email" class="form-control" value="{{ account.client2.email }}" name="client2" readonly>
+                {% endif %}
+            </div>
+            {% if account is none %}
+                <button type="submit" class="form-control btn btn-primary">Add Account</button>
+            {% else %}
+                <button type="submit" class="form-control btn btn-primary">Update Account</button>
+            {% endif %}
+        </form>
+
+{% endblock %}
