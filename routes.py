@@ -49,7 +49,9 @@ def signup():
     db.session.commit()
     db.session.refresh(user)
 
-    return Response(response=user.name + ' user created!')
+    session[CURRENT_USER_SESSION_KEY] = user.email
+
+    return redirect('/')
 
 
 @app.route('/clients', methods=['GET', 'POST'])

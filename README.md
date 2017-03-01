@@ -6,7 +6,7 @@
 
 * Clone this repo `git clone https://github.com/zinterview/client-management-system.git client-ms`
 * `cd client-ms`
-* Create a virtual environment `virtualenv venv`
+* Create a virtual environment `virtualenv -p python3 venv`
 * Use venv `source venv/bin/activate`
 * Install dependencies `pip install -r requirements.txt`
 
